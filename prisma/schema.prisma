@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model user {
+  id          Int     @id @default(autoincrement())
+  username    String  @db.VarChar(255)
+  email       String  @db.VarChar(64)
+  password    String  @db.VarChar(32)
+  confirmcode String? @db.VarChar(32)
+}
+
+// prisma/schema.prisma
+model jenis_tanaman {
+  No                     Int    @id @default(autoincrement())
+  Jenis_dan_Nama_Tanaman String
+  Nama_Latin             String
+  Rata_rata_Tinggi       String
+  Diameter_Batang        String
+  Keterangan             String?
+}
